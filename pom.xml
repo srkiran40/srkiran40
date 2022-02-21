@@ -128,8 +128,6 @@
 					<groupId>org.apache.tomcat.maven</groupId>
 					<artifactId>tomcat7-maven-plugin</artifactId>
 					<version>2.2</version>
-					<failOnMissingWebXml>false</failOnMissingWebXml>
-
 					<configuration>
 						<!-- context root for Java web apps -->
 						<server>tomcat-user</server>
