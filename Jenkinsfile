@@ -16,7 +16,7 @@ pipeline {
             steps {
                 sshagent(['9f850361-5242-4c9e-8455-38a692877ba5']) {
     // some block
-}
+                }
 }
 }
 }
