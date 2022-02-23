@@ -4,33 +4,20 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'devopsdeepdive2', url: 'https://github.com/devopsdeepdive/maven-web-project.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'f53f31e9-47cd-4e69-a7b6-81ea0f45f849', url: 'https://github.com/srkiran40/srkiran40.git']]])
             }
         }
-         stage('Build') {
+        stage('Build') {
             steps {
-                bat 'mvn validate'
-        }
+                sh 'mvn clean package'
+            }
     }
-        stage('package') {
+    stage('Deploy') {
             steps {
-                bat 'mvn clean package'
-        }
-    }
-     /*  stage('Test') {
-            steps {
-                bat 'mvn test'
-        }
-    } */
-         stage('Deploy') {
-            steps {
-                bat 'mvn install tomcat7:deploy'
-        }
-    }
-     stage('Notification') {
-            steps {
-                slackSend channel: '#pipeline-jobs', color: 'good', iconEmoji: ':with:grin:', message: 'Build is succesful and deployed', tokenCredentialId: 'slack'
-        }
-    }
+                sshagent(['9f850361-5242-4c9e-8455-38a692877ba5']) {
+    // some block
+}
+}
+}
 }
 }
